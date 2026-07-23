@@ -1,0 +1,217 @@
+<!--
+  Programmer: Chloe E. Barnes
+  Date: 7/23/2026
+  Description: This is the main homepage for the Athletes & Mental Health (AAMH) website.
+  It introduces the organization, founder, and core programs while providing navigation to all other pages.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AAMH – Athletes & Mental Health</title>
+
+  <!-- =====================================================
+    FONTS
+  ====================================================== -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"/>
+
+  <!-- Your stylesheet -->
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- =====================================================
+    NAVIGATION BAR
+  ====================================================== -->
+  <nav id="main-nav">
+    <div class="logo">A<span>AM</span>H <small>ATHLETES <span> & MENTAL </span>HEALTH</small></div>
+
+    <ul class="nav-links">
+      <li><a href="#home"       class="nav-link active">Home</a></li>
+      <li><a href="about.html"  class="nav-link">About</a></li>
+      <li><a href="programs.html"   class="nav-link">Programs</a></li>
+      <li><a href="contact.html" class="btn btn-lime nav-cta">Work With AAMH</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
+  </nav>
+
+  <!-- =====================================================
+    HERO SECTION
+  ====================================================== -->
+  <section id="home"      class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1>
+        Strong Minds.<br>
+        Stronger Athletes.<br>
+        <span class="script">Stronger Futures.</span>
+      </h1>
+      <p>
+        Creating sport spaces where athletes feel seen as people first.
+      </p>
+      <p>
+        Infusing empathy into sport spaces while destigmatizing conversations about mental health through
+        education, connection, and community.
+      </p>
+      <div class="hero-buttons">
+        <a href="contact.html" class="btn btn-outline">Work With AAMH</a>
+        <a href="#about.html" class="btn btn-outline">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="images/lovie-speaks.jpg" alt="Dr. Lovie Tabron" />
+    </div>
+  </section>
+
+  <!-- =====================================================
+    PILLARS STRIP
+  ====================================================== -->
+  <section class="pillars">
+
+    <div class="pillar">
+      <img src="images/mental-performance-icon.png" alt="Mental Performance" class="pillar-icon" /> 
+      <h3>Mental Performance</h3>
+      <p>Evidence-informed tools to help athletes train their mind like they train their body.</p>
+    </div>
+
+    <div class="pillar">
+      <img src="images/mental-wellness-icon.png" alt="Mental Performance" class="pillar-icon" />
+      <h3>Mental Wellness</h3>
+      <p>Promoting emotional well-being, self-awareness, and healthy coping strategies.</p>
+    </div>
+
+    <div class="pillar">
+      <img src="images/athlete-development-icon.png" alt="Athlete Development" class="pillar-icon" /> 
+      <h3>Athlete Development</h3>
+      <p>Building confidence, leadership, and identity beyond the game to prepare for life.</p>
+    </div>
+
+    <div class="pillar">
+      <img src="images/a-supportive-community-icon.png" alt="A Supportive Community" class="pillar-icon" /> 
+      <h3>A Supportive Community</h3>
+      <p>Creating safe spaces for athletes, families, and coaches to learn and grow together.</p>
+    </div>
+  </section>
+
+  <!-- =====================================================
+    FOUNDER SECTION
+  ====================================================== -->
+  <section id="about"     class="founder">
+
+    <div class="founder-photo">
+      <img src="images/lovie-headshot.jpg" alt="Dr. Lovie Tabron" />
+    </div>
+
+
+    <div class="founder-text">
+      <p class="eyebrow">Meet the Founder</p>
+      <h2>Hi, I'm Dr. Lovie Tabron.</h2>
+      <div class="accent-bar"></div>
+      <p>
+        I believe every person deserves to be seen, heard, and valued, not because of what they achieve, but because of who they are. 
+        My faith has always been the foundation of that belief. 
+        I believe every person is created with purpose, inherent worth, and the capacity to grow, even in life's most difficult seasons. 
+        That conviction shapes how I serve, how I lead, and how I care for every person I have the privilege of walking alongside.
+      </p>
+      <p>
+        I have learned that our calling is often found where our deepest gratitude meets the needs of others. For me, that calling has always been people.
+      </p>
+      <a href="about.html" class="btn btn-lime">More About Lovie</a>
+    </div>
+  </section>
+
+  <!-- =====================================================
+    PROGRAMS & SERVICES
+  ====================================================== -->
+  <section id="programs"  class="programs">
+    <span class="eyebrow">How We Help</span>
+    <h2>Programs & Services</h2>
+    <p>AAMH offers engaging programs for athletes, teams, coaches, and parents designed to build stronger minds and stronger communities.</p>
+
+    <div class="program-grid">
+
+      <div class="program-card">
+        <div class="program-overlay">
+          <img src="images/team-icon.png" alt="Team Workshops" class="pillar-icon" />
+          <h3>Team Workshops</h3>
+          <p>Interactive sessions that build mental skills, confidence, and team culture.</p>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-overlay">
+          <img src="images/coach-development-icon.png" alt="Coach Development" class="pillar-icon" /> 
+          <h3>Coach Development</h3>
+          <p>Equipping coaches with tools to support athletes' mental wellness and growth.</p>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-overlay">
+          <img src="images/parent-education-icon.png" alt="Parent Education" class="pillar-icon" />
+          <h3>Parent Education</h3>
+          <p>Guidance and education to help families support their athlete.</p>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-overlay">
+          <img src="images/keynote-speaking-icon.png" alt="Keynote Speaking" class="pillar-icon" />
+          <h3>Keynote Speaking</h3>
+          <p>Guidance and education to help families support their athlete.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <a href="programs.html" class="btn btn-outline-dark">View All Programs</a>
+  </section>
+
+  <!-- =====================================================
+    QUOTE + EMAIL SIGN-UP BANNER
+  ====================================================== -->
+  <section id="contact" class="banner">
+    <div class="banner-quote">
+      <div>
+        <blockquote>"Your mental game is your competitive edge."</blockquote>
+        <cite>— AAMH</cite>
+      </div>
+    </div>
+    <div class="banner-signup">
+      <h3>Stay Connected</h3>
+      <p>Get mental performance tips, resources, and updates delivered straight to your inbox.</p>
+      <div class="signup-form">
+        <input type="text"  id="firstName"    placeholder="First Name" />
+        <input type="email" id="emailAddress" placeholder="Email Address" />
+        <button type="button" id="signupBtn">Join the Community</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+    FOOTER
+  ====================================================== -->
+  <footer>
+    <div class="footer-logo">
+      A<span>A</span>MH
+      <small>ATHLETES & MENTAL HEALTH</small>
+    </div>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/athletesanmentalhealth?igsh=aWxpNXV1cHZpMW9i" target="_blank" aria-label="Instagram">
+        <img src="images/icons8-instagram-logo-50.png" alt="Instagram" style="width:24px; height:24px;" />
+      </a>
+      <a href="https://mail.google.com/mail/?view=cm&to=AAMHInformation@gmail.com" target="_blank" aria-label="Email">
+         <img src="images/icons8-gmail-50.png" alt="Email" style="width:24px; height:24px;" />
+      </a>
+    </div>
+    <p class="footer-copy">© 2026 Athletes & Mental Health, LLC. All Rights Reserved.</p>
+  </footer>
+
+  <!--JavaScript-->
+  <script src="main.js"></script>
+
+</body>
+</html>

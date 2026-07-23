@@ -1,0 +1,465 @@
+<!--
+  Programmer: Chloe E. Barnes
+  Date: 7/23/2026
+  Description: This page provides a detailed biography and personal story of AAMH founder Dr. Lovie Tabron.
+  It highlights her credentials, mission, and the inspiration behind creating Athletes & Mental Health.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Dr. Lovie Tabron – AAMH</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+
+  <style>
+    /* ── ABOUT PAGE STYLES ── */
+
+    /* Hero */
+    .about-hero {
+      background: var(--black);
+      padding: 80px 60px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      gap: 60px;
+      overflow: hidden;
+    }
+    .about-hero-text {
+      padding-bottom: 64px;
+    }
+    .about-hero-text .eyebrow {
+      color: var(--lime);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .about-hero-text h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--white);
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .about-hero-text h1 span { color: var(--lime); }
+    .about-hero-text .tagline {
+      font-family: var(--font-script);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--lime);
+      display: block;
+      margin-bottom: 20px;
+    }
+    .about-hero-text p {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.9rem;
+      line-height: 1.75;
+      max-width: 440px;
+    }
+    .about-hero-credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .credential-tag {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.85);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 20px;
+    }
+    .about-hero-image {
+      align-self: stretch;
+      min-height: 480px;
+      overflow: hidden;
+      border-radius: 12px 12px 0 0;
+    }
+    .about-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+    }
+
+    /* ── STORY BODY ── */
+    .about-body {
+      background: var(--white);
+      padding: 80px 30px;
+      max-width: 80%;
+      margin: 0 auto;
+    }
+
+    .about-body h2 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 12px;
+      line-height: 1.15;
+    }
+    .about-body h2 span { color: var(--lime); }
+
+    .about-body p {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .about-body .pull-quote {
+      border-left: 4px solid var(--lime);
+      padding: 16px 24px;
+      margin: 36px 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.4;
+      font-style: italic;
+    }
+
+    .about-body .scripture {
+      background: var(--black);
+      color: var(--white);
+      padding: 40px 48px;
+      border-radius: 12px;
+      margin: 48px 0;
+      text-align: center;
+    }
+    .about-body .scripture blockquote {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--lime);
+      line-height: 1.5;
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+    .about-body .scripture cite {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.1em;
+      font-style: normal;
+      text-transform: uppercase;
+    }
+
+    /* ── INLINE IMAGES ── */
+    .about-image-block {
+      margin: 48px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+    }
+    .about-image-block.left {
+      grid-template-columns: 1.2fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .about-image-block.right {
+      grid-template-columns: 1fr 1.2fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .about-image-block.full {
+      grid-template-columns: 1fr;
+    }
+    .about-image-block img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+    }
+    .about-image-block.full img {
+      height: 400px;
+    }
+    .about-image-caption {
+      padding: 8px 0;
+    }
+    .about-image-caption h3 {
+      font-size: 1.1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: var(--black);
+    }
+    .about-image-caption h3 span { color: var(--lime); }
+    .about-image-caption p {
+      font-size: 0.88rem;
+      color: #555;
+      line-height: 1.75;
+      margin-bottom: 0;
+    }
+
+    /* ── SECTION DIVIDER ── */
+    .about-divider {
+      width: 48px;
+      height: 4px;
+      background: var(--lime);
+      margin: 40px 0;
+    }
+
+    /* ── BOTTOM CTA ── */
+    .about-cta {
+      background: var(--black);
+      padding: 72px 60px;
+      text-align: center;
+    }
+    .about-cta h2 {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .about-cta h2 span { color: var(--lime); }
+    .about-cta p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      max-width: 440px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+    }
+    .about-cta .btn-group {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-hero {
+        grid-template-columns: 1fr;
+        padding: 60px 20px 0;
+        gap: 32px;
+      }
+      .about-hero-image {
+        min-height: 320px;
+        border-radius: 12px;
+        margin-bottom: 0;
+      }
+      .about-body { padding: 48px 20px; }
+      .about-image-block.left,
+      .about-image-block.right {
+        grid-template-columns: 1fr;
+      }
+      .about-cta { padding: 48px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav id="main-nav">
+    <div class="logo">A<span>AM</span>H <small>ATHLETES <span> & MENTAL </span>HEALTH</small></div>
+
+    <ul class="nav-links">
+      <li><a href="index.html"       class="nav-link active">Home</a></li>
+      <li><a href="about.html"  class="nav-link">About</a></li>
+      <li><a href="programs.html"   class="nav-link">Programs</a></li>
+      <li><a href="contact.html" class="btn btn-lime nav-cta">Work With AAMH</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="about-hero">
+    <div class="about-hero-text">
+      <span class="eyebrow">Meet the Founder</span>
+      <h1>Dr. Lovie Tabron</h1>
+      <span class="tagline">Living With Purpose. Serving With Heart.</span>
+      <p>Athletic Trainer • Educator • Speaker • Consultant • Pre-Licensed Clinical Mental Health Counselor • Sport & Performance Psychology</p>
+      <div class="about-hero-credentials">
+        <span class="credential-tag">Ed.D. Sport & Performance Psychology</span>
+        <span class="credential-tag">Certified Athletic Trainer</span>
+        <span class="credential-tag">Pre-Licensed CMHC</span>
+        <span class="credential-tag">Founder, AAMH</span>
+      </div>
+    </div>
+    <div class="about-hero-image">
+      <img src="images/lovie-headshot.jpg" alt="Dr. Lovie Tabron" />
+    </div>
+  </section>
+
+  <!-- ── STORY BODY ── -->
+  <div style="background: var(--gray-bg); padding: 1px 0;">
+  <article class="about-body">
+
+    <p style="font-size:1.05rem; color: #333; font-weight:600; margin-bottom: 32px;">
+      Every person has a story worth understanding. This is a little of mine.
+    </p>
+
+    <p>
+      I believe every person deserves to be seen, heard, and valued, not because of what they achieve, but because of who they are. My faith has always been the foundation of that belief. I believe every person is created with purpose, inherent worth, and the capacity to grow, even in life's most difficult seasons. That conviction shapes how I serve, how I lead, and how I care for every person I have the privilege of walking alongside.
+    </p>
+
+    <p>
+      I have learned that our calling is often found where our deepest gratitude meets the needs of others. For me, that calling has always been people.
+    </p>
+
+    <div class="pull-quote">
+      "At the heart of my work is a simple mission, to help people build a healthier relationship with themselves so they can navigate life with greater confidence, resilience, hope, and purpose."
+    </div>
+
+    <!-- ── IMAGE 1 ── -->
+    <div class="about-image-block left">
+      <img src="images/group-picture-1.jpg" alt="Dr. Lovie Tabron speaking" />
+      <div class="about-image-caption">
+        <h3>A Career Built on People</h3>
+        <p>
+          As a Pre-Licensed Clinical Mental Health Counselor, educator, speaker, consultant, and Certified Athletic Trainer, Dr. Lovie has served people in counseling offices, athletic training rooms, classrooms, locker rooms, boardrooms, and conference stages, working with student athletes, professional athletes, coaches, parents, educators, and healthcare professionals.
+        </p>
+      </div>
+    </div>
+
+    <div class="about-divider"></div>
+
+    <h2>A Journey Shaped by Purpose</h2>
+
+    <p>
+      Although the settings have changed throughout my career, the mission has never changed. I want people to leave feeling more equipped than when they arrived.
+    </p>
+
+    <p>
+      While each person's story is unique, I have found that many of us are searching for the same things, to be understood, to find hope, to believe we are capable of moving forward.
+    </p>
+
+    <p>
+      I do not believe people are defined by their hardest moments. I believe healing is possible, resilience can be developed, and that even when we cannot see it in the moment, God often uses our hardest seasons to reveal strengths we did not know we possessed. Those experiences deepen our understanding of ourselves and cultivate the empathy that allows us to genuinely care for and serve others.
+    </p>
+
+    <p>
+      My own professional journey has included seasons of incredible joy and seasons of unexpected change. Those experiences have reminded me that titles change, careers evolve, and circumstances shift, but our identity must be rooted in something deeper than what we do. That perspective shapes how I sit with clients, how I teach, how I speak, and how I encourage others to build a foundation that cannot be taken away.
+    </p>
+
+    <!-- ── IMAGE 2 ── -->
+    <div class="about-image-block right">
+      <div class="about-image-caption">
+        <h3>The Education Behind the Mission</h3>
+        <p>
+          Dr. Lovie earned her Doctor of Education in Sport and Performance Psychology to better understand how people think, grow, and thrive under pressure. Along the way, she continued building on her foundation as a Certified Athletic Trainer while pursuing her calling in mental health counseling, because mental health is not separate from performance, leadership, relationships, or healing. It influences every part of our lives.
+        </p>
+      </div>
+      <img src="images/team-workshops.webp" alt="Dr. Lovie with athletes" />
+    </div>
+
+    <div class="about-divider"></div>
+
+    <h2>The Birth of AAMH</h2>
+
+    <p>
+      That understanding inspired me to create Athletes and Mental Health. AAMH was born from a desire to give back to my hometown of Wilson, North Carolina, even while living hundreds of miles away. As I reflected on everything my education, career, mentors, and experiences had given me, I realized one of the greatest gifts we can offer our communities is not always financial. Sometimes it is the knowledge we have gained, the wisdom we have earned, and the willingness to return and share it.
+    </p>
+
+    <p>
+      I realized I did not have to wait until I had limitless resources to make a meaningful impact. I could begin with what God had already placed in my hands.
+    </p>
+
+    <p>
+      What started as one conversation with student athletes in the community that helped shape me has grown into opportunities to partner with schools, athletic departments, organizations, businesses, healthcare professionals, and communities across the country. The reach has grown, but the mission has remained the same, to make conversations about mental health more approachable, practical, compassionate, and accessible.
+    </p>
+
+    <!-- ── IMAGE 3 & 4── -->
+    <div class="about-image-block right">
+      <img src="images/group-picture-2.jpg" alt="Dr. Lovie with community" style="object-position: top;"/>
+      <img src="images/group-picture-3.jpg" alt="Dr. Lovie with community" style="object-position: top;"/>
+
+    </div>
+
+    <div class="about-divider"></div>
+
+    <h2>How I Serve</h2>
+
+    <p>
+      Whether I am providing counseling, facilitating a workshop, consulting with an organization, teaching future professionals, or standing on a stage delivering a keynote, my goal is never simply to share information. It is to create space for transformation.
+    </p>
+
+    <p>
+      I do not believe my role is to fix people. I believe my role is to walk alongside them as they discover the strength, wisdom, and resilience that have been within them all along.
+    </p>
+
+    <p>
+      I want people to walk away with practical tools they can apply immediately. I want organizations to create cultures where people feel supported. I want coaches to understand the power of empathy. I want parents to feel equipped to have meaningful conversations with their children. I want leaders to recognize that caring for people is not separate from excellence, it is how excellence is sustained.
+    </p>
+
+    <p>
+      My work is grounded in evidence-based practices, including cognitive behavioral therapy and person-centered care, while my faith reminds me why every person deserves compassion, dignity, and hope. I honor each person's beliefs and values, creating a space where they feel respected, safe, and empowered to pursue meaningful growth.
+    </p>
+
+    <p>
+      More than anything, I hope the people whose paths cross mine leave feeling seen.
+    </p>
+
+    <!-- ── SCRIPTURE BLOCK ── -->
+    <div class="scripture">
+      <blockquote>"Let your light shine before others, that they may see your good deeds and glorify your Father in heaven."</blockquote>
+      <cite>Matthew 5:16</cite>
+    </div>
+
+    <p>
+      That verse is a daily reminder that my work is not about recognition. It is about stewardship, using the gifts God has entrusted to me to serve others with excellence, humility, and compassion.
+    </p>
+
+    <p style="font-size:1rem; font-weight: 700; color: var(--black);">
+      Thank you for taking the time to learn a little about my story.<br>
+      I look forward to learning yours.
+    </p>
+
+  </article>
+  </div>
+
+  <!-- ── BOTTOM CTA ── -->
+  <section class="about-cta">
+    <h2>Ready to Work With <span>AAMH?</span></h2>
+    <p>Whether you're a coach, athletic director, parent, or organization — Dr. Lovie is ready to walk alongside you.</p>
+    <div class="btn-group">
+      <a href="contact.html"  class="btn btn-lime">Work With AAMH</a>
+      <a href="programs.html" class="btn btn-outline">View Programs</a>
+    </div>
+  </section>
+
+  <!-- ── BANNER + FOOTER ── -->
+  <section class="banner">
+    <div class="banner-quote">
+      <div>
+        <blockquote>"Your mental game is your competitive edge."</blockquote>
+        <cite>— AAMH</cite>
+      </div>
+    </div>
+    <div class="banner-signup">
+      <h3>Stay Connected</h3>
+      <p>Get mental performance tips, resources, and updates delivered straight to your inbox.</p>
+      <div class="signup-form">
+        <input type="text"  id="firstName"    placeholder="First Name" />
+        <input type="email" id="emailAddress" placeholder="Email Address" />
+        <button type="button" id="signupBtn">Join the Community</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">
+      A<span>A</span>MH
+      <small>ATHLETES & MENTAL HEALTH</small>
+    </div>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/athletesanmentalhealth?igsh=aWxpNXV1cHZpMW9i" target="_blank" aria-label="Instagram">
+        <img src="images/icons8-instagram-logo-50.png" alt="Instagram" style="width:24px; height:24px;" />
+      </a>
+      <a href="https://mail.google.com/mail/?view=cm&to=AAMHInformation@gmail.com" target="_blank" aria-label="Email">
+        <img src="images/icons8-gmail-50.png" alt="Email" style="width:24px; height:24px;" />
+      </a>
+    </div>
+    <p class="footer-copy">© 2026 Athletes & Mental Health, LLC. All Rights Reserved.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

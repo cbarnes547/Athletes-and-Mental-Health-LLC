@@ -1,0 +1,542 @@
+/*
+  Programmer: Chloe E. Barnes
+  Date: 7/23/2026
+  Description: This stylesheet controls the visual design and layout for all pages of the AAMH website.
+  It includes design tokens, navigation, hero, programs, founder, banner, and footer styles.
+*/
+
+
+/* =====================================================
+  DESIGN TOKENS — change these to restyle the whole site
+====================================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --black:   #0d0d0d;
+  --white:   #ffffff;
+  --lime:    #ace800;   /* the signature green used on buttons & accents */
+  --gray-bg: #f4f4f4;
+  --text:    #1a1a1a;
+  --font-body:    'Montserrat', sans-serif;
+  --font-script:  'Dancing Script', cursive;
+}
+
+/* =====================================================
+  RESET & BASE
+====================================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--white);
+}
+img { max-width: 100%; display: block; }
+a  { text-decoration: none; color: inherit; }
+
+/* Shared button styles */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn:hover { opacity: 0.85; }
+.btn-lime    { background: var(--lime);  color: var(--black); }
+.btn-outline { background: transparent; color: var(--white); border: 2px solid var(--white); }
+.btn-outline-dark {
+  border: 2px solid var(--text);
+  color: var(--text);
+  background: transparent;
+  border-radius: 30px;
+  padding: 12px 28px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-outline-dark:hover { background: var(--text); color: var(--white); }
+
+/* =====================================================
+  NAVIGATION
+====================================================== */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 60px;
+  background: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* ── LOGO ──────────────────────────────────────────
+  Replace the text below with an <img> tag pointing
+  to your actual AAMH logo file, e.g.:
+    <img src="images/aamh-logo.svg" alt="AAMH Logo"/>
+─────────────────────────────────────────────────── */
+.logo {
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+.logo span { color: var(--lime); }
+.logo small {
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  display: block;
+  color: #666;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  transition: color 0.2s;
+}
+.nav-link.active,
+.nav-link:hover {
+  color: var(--lime);
+  border-bottom: 2px solid var(--lime);
+}
+.nav-cta { background: var(--lime); color: var(--black); }
+
+#main-nav.scrolled .nav-link {
+  color: var(--lime);
+}
+
+/* =====================================================
+  HERO SECTION
+====================================================== */
+.hero {
+  position: relative;
+  min-height: 520px;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ── HERO BACKGROUND IMAGE ──────────────────────────
+  Replace the gradient below with your athlete photo:
+    background-image: url('images/hero-athlete.jpg');
+  Make sure the image is high-res (1400px+ wide).
+  The overlay keeps text readable over any photo.
+─────────────────────────────────────────────────── */
+.hero-image {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 45%;
+  overflow: hidden;
+}
+
+.hero-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+  z-index: 1;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.2));
+  /* ↑ Remove this gradient and add background-image once you have the photo */
+  background-size: cover;
+  background-position: center top;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 80px 60px;
+  max-width: 580px;
+}
+.hero-content h1 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--white);
+  text-transform: uppercase;
+}
+.hero-content h1 .script {
+  font-family: var(--font-script);
+  text-transform: none;
+  color: var(--lime);
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+}
+.hero-content p {
+  margin: 20px 0 32px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+  max-width: 420px;
+}
+.hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* =====================================================
+  PILLARS STRIP (4 icon cards below hero)
+====================================================== */
+.pillars {
+  background: var(--black);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 48px 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.pillar {
+  text-align: center;
+  color: var(--white);
+  padding: 8px 16px;
+  border-right: 1px solid rgba(255,255,255,0.15);
+}
+.pillar:last-child { border-right: none; }
+
+/* ── PILLAR ICONS ───────────────────────────────────
+  Currently using emoji as placeholders.
+  Swap each span.pillar-icon for an <img> or an SVG:
+    e.g. <img src="icons/mental-performance.svg" …/>
+─────────────────────────────────────────────────── */
+.pillar-icon {
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin: 0 auto 12px;
+  object-fit: contain;
+}
+.pillar h3 {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.pillar p { font-size: 0.8rem; line-height: 1.6; color: rgba(255,255,255,0.7); }
+
+/* =====================================================
+  FOUNDER / "HI, I'M LOVIE" SECTION
+====================================================== */
+.founder {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  min-height: 400px;
+  align-items: stretch;
+}
+
+/* ── FOUNDER PHOTO ──────────────────────────────────
+  Replace the gray placeholder with:
+    background-image: url('images/lovie-headshot.jpg');
+  Crop to show her from shoulders up, smile visible.
+─────────────────────────────────────────────────── */
+.founder-photo {
+  overflow: hidden;
+  min-height: 380px;
+}
+.founder-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* fills the space without stretching */
+  object-position: center 15%; /* keeps her centered vertically */
+  display: block;
+}
+
+.founder-text {
+  padding: 64px 60px 64px 48px;
+  background: var(--white);
+}
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 10px;
+}
+.founder-text h2 {
+  font-size: 2.4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.accent-bar {
+  width: 48px; height: 4px;
+  background: var(--lime);
+  margin-bottom: 20px;
+}
+.founder-text p {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: #444;
+  margin-bottom: 14px;
+}
+.founder-text .btn { margin-top: 8px; }
+
+/* =====================================================
+  PROGRAMS & SERVICES
+====================================================== */
+.programs {
+  background: var(--gray-bg);
+  padding: 72px 60px;
+  text-align: center;
+}
+.programs .eyebrow { display: block; margin-bottom: 6px; }
+.programs h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.programs > p {
+  font-size: 0.9rem;
+  color: #555;
+  max-width: 480px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.program-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 220px;
+  cursor: pointer;
+}
+
+/* ── PROGRAM CARD IMAGES ────────────────────────────
+  Each card needs its own background photo. Replace
+  the colors below with your real images, e.g.:
+    background-image: url('images/team-workshops.jpg');
+    background-size: cover;
+    background-position: center;
+─────────────────────────────────────────────────── */
+.program-card:nth-child(1) { background: #3a5a2a; } /* 📷 Team Workshops photo here */
+.program-card:nth-child(2) { background: #1a2a3a; } /* 📷 Coach Education photo here */
+.program-card:nth-child(3) { background: #2a3a4a; } /* 📷 Athlete Programs photo here */
+.program-card:nth-child(4) { background: #3a2a2a; } /* 📷 Parent Support photo here */
+
+.program-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 40%, transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px 16px;
+  color: var(--white);
+  text-align: left;
+}
+.program-icon { font-size: 1.4rem; color: var(--lime); margin-bottom: 6px; }
+.program-overlay h3 {
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.program-overlay p { font-size: 0.75rem; line-height: 1.5; color: rgba(255,255,255,0.8); }
+
+/* =====================================================
+  QUOTE + EMAIL SIGN-UP BANNER
+====================================================== */
+.banner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.banner-quote {
+  background: var(--black);
+  padding: 56px 60px;
+  display: flex;
+  align-items: center;
+}
+.banner-quote blockquote {
+  color: var(--lime);
+  font-size: 1.6rem;
+  font-weight: 900;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.banner-quote cite {
+  display: block;
+  color: var(--white);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  margin-top: 14px;
+  font-style: normal;
+}
+.banner-signup {
+  background: var(--lime);
+  padding: 56px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.banner-signup h3 {
+  font-size: 1.3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: var(--black);
+}
+.banner-signup p {
+  font-size: 0.85rem;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.signup-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.signup-form input {
+  flex: 1;
+  min-width: 120px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+}
+.signup-form button {
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+.signup-form button:hover { opacity: 0.8; }
+
+/* =====================================================
+  FOOTER
+====================================================== */
+footer {
+  background: var(--white);
+  border-top: 1px solid #e5e5e5;
+  padding: 28px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-logo { font-size: 1.2rem; font-weight: 900; }
+.footer-logo span { color: var(--lime); }
+.footer-logo small {
+  font-size: 0.4rem;
+  font-weight: 400;
+  display: block;
+  color: #888;
+  letter-spacing: 0.08em;
+}
+.footer-socials {
+  display: flex;
+  gap: 20px;
+  font-size: 1.2rem;
+}
+.footer-socials a { color: var(--text); transition: color 0.2s; }
+.footer-socials a:hover { color: var(--lime); }
+.footer-copy { font-size: 0.72rem; color: #888; }
+
+.footer-socials a img {
+  transition: opacity 0.2s;
+  filter: brightness(0); /* makes them black to match your footer */
+}
+.footer-socials a:hover img {
+  opacity: 0.6;
+}
+.footer-socials a:hover img {
+  filter: brightness(0) saturate(100%) invert(78%) sepia(60%) saturate(500%) hue-rotate(30deg) brightness(110%);
+  opacity: 1;
+}
+
+/* =====================================================
+HAMBURGER MENU (for mobile)
+====================================================== */
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text);
+}
+@media (max-width: 768px) {
+  .hamburger { display: block; }
+}
+.nav-links.open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 99;
+}
+.nav-links.open li { width: 100%; }
+.nav-links.open a { padding: 10px 0; display: block; }
+
+
+/* =====================================================
+  RESPONSIVE — basic mobile stacking
+====================================================== */
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; } /* TODO: add a hamburger menu in main.js */
+  .hero-content { padding: 60px 20px; }
+  .pillars { grid-template-columns: 1fr 1fr; padding: 32px 20px; }
+  .pillar { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .founder { grid-template-columns: 1fr; }
+  .founder-photo { min-height: 280px; }
+  .founder-text { padding: 40px 20px; }
+  .programs { padding: 48px 20px; }
+  .program-grid { grid-template-columns: 1fr 1fr; }
+  .banner { grid-template-columns: 1fr; }
+  .banner-quote, .banner-signup { padding: 40px 20px; }
+  footer { flex-direction: column; align-items: center; text-align: center; padding: 24px 20px; }
+}

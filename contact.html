@@ -1,0 +1,456 @@
+<!--
+  Programmer: Chloe E. Barnes
+  Date: 7/23/2026
+  Description: This page contains the inquiry form for users to request services from AAMH.
+  Form submissions are sent directly to the organization's email using the EmailJS platform.
+-->
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Work With AAMH – Contact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>emailjs.init('WxlneDzBjQlqNKryy');</script>
+
+  <style>
+    /* ── CONTACT PAGE STYLE ── */
+
+    .contact-hero {
+      background: var(--black);
+      padding: 80px 60px 60px;
+      text-align: center;
+    }
+    .contact-hero .eyebrow {
+      color: var(--lime);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .contact-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      color: var(--white);
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .contact-hero h1 span { color: var(--lime); }
+    .contact-hero p {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.95rem;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── FORM SECTION ── */
+    .contact-section {
+      background: var(--gray-bg);
+      padding: 72px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Left side info */
+    .contact-info h2 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .contact-info h2 span { color: var(--lime); }
+    .accent-bar {
+      width: 48px;
+      height: 4px;
+      background: var(--lime);
+      margin-bottom: 20px;
+    }
+    .contact-info p {
+      font-size: 0.88rem;
+      color: #555;
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .contact-detail-item .icon {
+      font-size: 1.2rem;
+      margin-top: 2px;
+    }
+    .contact-detail-item div {
+      font-size: 0.8rem;
+      color: #444;
+      line-height: 1.6;
+    }
+    .contact-detail-item strong {
+      display: block;
+      font-weight: 700;
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.7rem;
+      margin-bottom: 2px;
+    }
+
+    /* Right side form */
+    .contact-form-wrap {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    }
+    .contact-form-wrap h3 {
+      font-size: 1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 24px;
+      color: var(--black);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 16px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #666;
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 12px 14px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: var(--text);
+      background: #fafafa;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--lime);
+      background: var(--white);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      cursor: pointer;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--lime);
+      color: var(--black);
+      border: none;
+      border-radius: 30px;
+      font-family: var(--font-body);
+      font-weight: 900;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+      margin-top: 8px;
+    }
+    .submit-btn:hover { opacity: 0.85; }
+    .submit-btn:active { transform: scale(0.98); }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* Success / Error messages */
+    .form-message {
+      display: none;
+      padding: 14px 16px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-top: 16px;
+      text-align: center;
+    }
+    .form-message.success {
+      background: #e8f5d0;
+      color: #3a6b00;
+      border: 1.5px solid var(--lime);
+    }
+    .form-message.error {
+      background: #fde8e8;
+      color: #a00;
+      border: 1.5px solid #f5a0a0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .contact-section {
+        grid-template-columns: 1fr;
+        padding: 48px 20px;
+        gap: 40px;
+      }
+      .contact-hero { padding: 60px 20px 40px; }
+    }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form-wrap { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav id="main-nav">
+    <div class="logo">A<span>AM</span>H <small>ATHLETES <span> & MENTAL </span>HEALTH</small></div>
+
+    <ul class="nav-links">
+      <li><a href="index.html"       class="nav-link active">Home</a></li>
+      <li><a href="about.html"  class="nav-link">About</a></li>
+      <li><a href="programs.html"   class="nav-link">Programs</a></li>
+      <li><a href="contact.html" class="btn btn-lime nav-cta">Work With AAMH</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="contact-hero">
+    <span class="eyebrow">Let's Connect</span>
+    <h1>Work With AAMH</h1>
+    <p>Ready to bring mental wellness into your athletic program? Fill out the form and Dr. Lovie will be in touch to set up a time to connect.</p>
+  </section>
+
+  <!-- ── FORM + INFO ── -->
+  <div style="background: var(--gray-bg); padding: 72px 60px;">
+  <div class="contact-section">
+
+    <!-- Left: info -->
+    <div class="contact-info">
+      <h2>Let's Build Something Together</h2>
+      <div class="accent-bar"></div>
+      <p>Whether you're a coach, athletic director, school administrator, or parent — AAMH has a program built for your community. Reach out and let's start the conversation.</p>
+
+      <div class="contact-detail">
+        <div class="contact-detail-item">
+          <span class="icon">📧</span>
+          <div>
+            <strong>Email</strong>
+            info@athletesandmentalhealth.com
+          </div>
+        </div>
+        <div class="contact-detail-item">
+          <span class="icon">📲</span>
+          <div>
+            <strong>Response Time</strong>
+            Within 24–48 hours
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: form -->
+    <div class="contact-form-wrap">
+      <h3>Submit Your Inquiry</h3>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" placeholder="Jane Doe" required />
+        </div>
+        <div class="form-group">
+          <label for="organization">Organization *</label>
+          <input type="text" id="organization" placeholder="Wilson High School" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" placeholder="jane@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="(757) 555-0123" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="program">Program Interest *</label>
+          <select id="program" required>
+            <option value="" disabled selected>Select a program</option>
+            <option>Team Workshops</option>
+            <option>Coach Development</option>
+            <option>Parent Education</option>
+            <option>Keynote Speaking</option>
+            <option>Mental Performance Education</option>
+            <option>Panel Facilitation</option>
+            <option>Mental Health First Aid</option>
+            <option>Consulting</option>
+            <option>Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="audience">Audience *</label>
+          <select id="audience" required>
+            <option value="" disabled selected>Select your audience</option>
+            <option>Youth Athletes (under 13)</option>
+            <option>Middle School Athletes</option>
+            <option>High School Athletes</option>
+            <option>College Athletes</option>
+            <option>Professional Athletes</option>
+            <option>Coaches & Staff</option>
+            <option>Parents & Families</option>
+            <option>Mixed / Multiple Groups</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="message">How can AAMH support your team? *</label>
+        <textarea id="message" placeholder="Tell us a little about your team, your goals, and what you're hoping AAMH can help with..." required></textarea>
+      </div>
+
+      <button class="submit-btn" id="submitBtn" type="button">Send Inquiry</button>
+
+      <div class="form-message success" id="successMsg">
+        ✅ Your inquiry was sent! Dr. Lovie will be in touch within 24–48 hours.
+      </div>
+      <div class="form-message error" id="errorMsg">
+        ❌ Something went wrong. Please try again or email us directly.
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <section class="banner">
+    <div class="banner-quote">
+      <div>
+        <blockquote>"Your mental game is your competitive edge."</blockquote>
+        <cite>— AAMH</cite>
+      </div>
+    </div>
+    <div class="banner-signup">
+      <h3>Stay Connected</h3>
+      <p>Get mental performance tips, resources, and updates delivered straight to your inbox.</p>
+      <div class="signup-form">
+        <input type="text"  id="firstName"    placeholder="First Name" />
+        <input type="email" id="emailAddress" placeholder="Email Address" />
+        <button type="button" id="signupBtn">Join the Community</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">
+      A<span>A</span>MH
+      <small>ATHLETES & MENTAL HEALTH</small>
+    </div>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/athletesanmentalhealth?igsh=aWxpNXV1cHZpMW9i" target="_blank" aria-label="Instagram">
+        <img src="images/icons8-instagram-logo-50.png" alt="Instagram" style="width:24px; height:24px;" />
+      </a>
+      <a href="https://mail.google.com/mail/?view=cm&to=AAMHInformation@gmail.com" target="_blank" aria-label="Email">
+        <img src="images/icons8-gmail-50.png" alt="Email" style="width:24px; height:24px;" />
+      </a>
+    </div>
+    <p class="footer-copy">© 2026 Athletes & Mental Health, LLC. All Rights Reserved.</p>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    document.getElementById('submitBtn').addEventListener('click', function () {
+      const btn        = document.getElementById('submitBtn');
+      const successMsg = document.getElementById('successMsg');
+      const errorMsg   = document.getElementById('errorMsg');
+
+      // Grab values
+      const name         = document.getElementById('name').value.trim();
+      const organization = document.getElementById('organization').value.trim();
+      const email        = document.getElementById('email').value.trim();
+      const phone        = document.getElementById('phone').value.trim();
+      const program      = document.getElementById('program').value;
+      const audience     = document.getElementById('audience').value;
+      const message      = document.getElementById('message').value.trim();
+
+      // Basic validation
+      if (!name || !organization || !email || !program || !audience || !message) {
+        errorMsg.textContent = '⚠️ Please fill in all required fields.';
+        errorMsg.style.display = 'block';
+        successMsg.style.display = 'none';
+        return;
+      }
+
+      // Hide any previous messages
+      successMsg.style.display = 'none';
+      errorMsg.style.display   = 'none';
+
+      // Disable button while sending
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      // Send via EmailJS
+      emailjs.send('service_utlnx5i', 'template_snzgfhb', {
+        name,
+        organization,
+        email,
+        phone: phone || 'Not provided',
+        program,
+        audience,
+        message
+      })
+      .then(() => {
+        successMsg.style.display = 'block';
+        btn.textContent = 'Sent!';
+        // Clear the form
+        ['name','organization','email','phone','message'].forEach(id => {
+          document.getElementById(id).value = '';
+        });
+        document.getElementById('program').selectedIndex = 0;
+        document.getElementById('audience').selectedIndex = 0;
+      })
+      .catch(() => {
+        errorMsg.textContent = '❌ Something went wrong. Please try again or email us directly.';
+        errorMsg.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Send Inquiry';
+      });
+    });
+  </script>
+
+</body>
+</html>

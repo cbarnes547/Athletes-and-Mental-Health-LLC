@@ -1,0 +1,366 @@
+<!--
+  Programmer: Chloe E. Barnes
+  Date: 7/23/2026
+  Description: This page displays all 8 programs and services offered by Athletes & Mental Health.
+  Each card includes a description and a link to the contact page for booking inquiries.
+-->
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Programs & Services – AAMH</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── PROGRAMS PAGE STYLE ── */
+
+    .programs-hero {
+      background: var(--black);
+      padding: 80px 60px 60px;
+      text-align: center;
+    }
+    .programs-hero .eyebrow {
+      color: var(--lime);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .programs-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      color: var(--white);
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .programs-hero h1 span {
+      color: var(--lime);
+    }
+    .programs-hero p {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.95rem;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── 8-CARD GRID ── */
+    .programs-full {
+      background: var(--gray-bg);
+      padding: 72px 60px;
+    }
+
+    .programs-full-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .prog-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .prog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .prog-card-image {
+      width: 100%;
+      height: 180px;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .prog-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .prog-card-image .placeholder-icon {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      opacity: 1;
+    }
+
+    .prog-card-image .prog-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--lime);
+      color: var(--black);
+      font-size: 0.6rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .prog-card-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .prog-card-body h3 {
+      font-size: 0.85rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    .prog-card-body p {
+      font-size: 0.8rem;
+      color: #555;
+      line-height: 1.65;
+      flex: 1;
+    }
+    .prog-card-body .prog-cta {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--lime);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 2px solid var(--lime);
+      padding-bottom: 2px;
+      align-self: flex-start;
+      transition: opacity 0.2s;
+    }
+    .prog-card-body .prog-cta:hover { opacity: 0.7; }
+
+    /* ── CTA STRIP AT BOTTOM ── */
+    .programs-cta {
+      background: var(--black);
+      padding: 64px 60px;
+      text-align: center;
+    }
+    .programs-cta h2 {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .programs-cta h2 span { color: var(--lime); }
+    .programs-cta p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      max-width: 440px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .programs-full-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .programs-hero { padding: 60px 20px 40px; }
+      .programs-full { padding: 48px 20px; }
+      .programs-full-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .programs-cta { padding: 48px 20px; }
+    }
+    @media (max-width: 480px) {
+      .programs-full-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV (same as homepage) ── -->
+  <nav id="main-nav">
+    <div class="logo">A<span>AM</span>H <small>ATHLETES <span> & MENTAL </span>HEALTH</small></div>
+
+    <ul class="nav-links">
+      <li><a href="index.html"       class="nav-link active">Home</a></li>
+      <li><a href="about.html"  class="nav-link">About</a></li>
+      <li><a href="programs.html"   class="nav-link">Programs</a></li>
+      <li><a href="contact.html" class="btn btn-lime nav-cta">Work With AAMH</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
+  </nav>
+
+  <!-- ── PAGE HERO ── -->
+  <section class="programs-hero">
+    <span class="eyebrow">What We Offer</span>
+    <h1>Programs &amp; Services</h1>
+    <p>Designed for athletes, teams, coaches, and families — every program is built to strengthen minds and build lasting community.</p>
+  </section>
+
+  <!-- ── 8 PROGRAM CARDS ── -->
+  <section class="programs-full">
+    <div class="programs-full-grid">
+
+      <!-- Card 1 -->
+      <div class="prog-card">
+        <div class="prog-card-image">
+          <img src="images/team-icon.png" alt="Team Workshops" class="placeholder-icon" style="width: 60px; height: 60px; object-fit: contain;" />
+            <span class="prog-tag">Teams</span>
+        </div>
+        <div class="prog-card-body">
+          <h3>Team Workshops</h3>
+          <p>Interactive group sessions that build mental skills, team cohesion, and a culture where athletes feel safe to show up as their full selves.</p>
+          <a href="contact.html" class="prog-cta">Book This →</a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="prog-card">
+        <div class="prog-card-image">
+          <img src="images/coach-development-icon.png" alt="Coach Development" class="placeholder-icon" style="width: 60px; height: 60px; object-fit: contain;" />
+            <span class="prog-tag">Coaches</span>
+        </div>
+        <div class="prog-card-body">
+          <h3>Coach Development</h3>
+          <p>Equipping coaches with the language, tools, and confidence to support athletes' mental wellness alongside physical performance.</p>
+          <a href="contact.html" class="prog-cta">Book This →</a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="prog-card">
+        <div class="prog-card-image">
+          <img src="images/parent-education-icon.png" alt="Parent Education" class="placeholder-icon" style="width: 60px; height: 60px; object-fit: contain;" />
+            <span class="prog-tag">Families</span>
+        </div>
+        <div class="prog-card-body">
+          <h3>Parent Education</h3>
+          <p>Helping parents understand what their athlete is experiencing mentally and emotionally, and how to be the support system they need.</p>
+          <a href="contact.html" class="prog-cta">Book This →</a>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="prog-card">
+        <div class="prog-card-image">
+          <img src="images/keynote-speaking-icon.png" alt="Keynote Speaking" class="placeholder-icon" style="width: 60px; height: 60px; object-fit: contain;" />
+            <span class="prog-tag">Speaking</span>
+        </div>
+        <div class="prog-card-body">
+          <h3>Keynote Speaking</h3>
+          <p>Powerful, story-driven keynotes that shift the culture around mental health in sport, for conferences, banquets, and team events.</p>
+          <a href="contact.html" class="prog-cta">Book This →</a>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="prog-card">
+        <div class="prog-card-image">
+          <img src="images/mental-performance-icon.png" alt="Mental Performance Training" class="placeholder-icon" style="width: 60px; height: 60px; object-fit: contain;" />
+            <span class="prog-tag">Athletes</span>
+        </div>
+        <div class="prog-card-body">
+          <h3>Mental Performance Training</h3>
+          <p>One-on-one and group sessions focused on focus, confidence, resilience, and the mental skills that separate good athletes from great ones.</p>
+          <a href="contact.html" class="prog-cta">Book This →</a>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="prog-card">
+        <div class="prog-card-image">
+          <img src="images/panel-facilitation-icon.png" alt="Panel Facilitation" class="placeholder-icon" style="width: 60px; height: 60px; object-fit: contain;" />
+            <span class="prog-tag">Wellness</span>
+        </div>
+        <div class="prog-card-body">
+          <h3>Panel Facilitation</h3>
+          <p>Safe, guided conversations around emotional well-being, identity, burnout, and coping — giving athletes space to just be human.</p>
+          <a href="contact.html" class="prog-cta">Book This →</a>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="prog-card">
+        <div class="prog-card-image">
+          <img src="images/mental-health-first-aid-icon.png" alt="Mental Health First Aid" class="placeholder-icon" style="width: 60px; height: 60px; object-fit: contain;" />
+            <span class="prog-tag">Development</span>
+        </div>
+        <div class="prog-card-body">
+          <h3>Mental Health First Aid</h3>
+          <p>Training for coaches, staff, and community members to recognize and respond to mental health crises in athletes.</p>
+          <a href="contact.html" class="prog-cta">Book This →</a>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="prog-card">
+        <div class="prog-card-image">
+          <img src="images/consulting-icon.png" alt="Consulting" class="placeholder-icon" style="width: 60px; height: 60px; object-fit: contain;" />
+            <span class="prog-tag">Community</span>
+        </div>
+        <div class="prog-card-body">
+          <h3>Consulting</h3>
+          <p>Collaborating with schools, leagues, and organizations to embed mental health awareness and support into the fabric of sport culture.</p>
+          <a href="contact.html" class="prog-cta">Book This →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── BOTTOM CTA ── -->
+  <section class="programs-cta">
+    <h2>Ready to Work With <span>AAMH?</span></h2>
+    <p>Every program is customizable to your team, school, or organization. Let's build something together.</p>
+    <a href="contact.html" class="btn btn-lime">Get In Touch</a>
+  </section>
+
+  <!-- ── FOOTER (same as homepage) ── -->
+  <section id="contact" class="banner">
+    <div class="banner-quote">
+      <div>
+        <blockquote>"Your mental game is your competitive edge."</blockquote>
+        <cite>— AAMH</cite>
+      </div>
+    </div>
+    <div class="banner-signup">
+      <h3>Stay Connected</h3>
+      <p>Get mental performance tips, resources, and updates delivered straight to your inbox.</p>
+      <div class="signup-form">
+        <input type="text"  id="firstName"    placeholder="First Name" />
+        <input type="email" id="emailAddress" placeholder="Email Address" />
+        <button type="button" id="signupBtn">Join the Community</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">
+      A<span>A</span>MH
+      <small>ATHLETES & MENTAL HEALTH</small>
+    </div>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/athletesanmentalhealth?igsh=aWxpNXV1cHZpMW9i" target="_blank" aria-label="Instagram">
+        <img src="images/icons8-instagram-logo-50.png" alt="Instagram" style="width:24px; height:24px;" />
+      </a>
+      <a href="https://mail.google.com/mail/?view=cm&to=AAMHInformation@gmail.com" target="_blank" aria-label="Email">
+        <img src="images/icons8-gmail-50.png" alt="Email" style="width:24px; height:24px;" />
+      </a>
+    </div>
+    <p class="footer-copy">© 2026 Athletes & Mental Health, LLC. All Rights Reserved.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
