@@ -2,7 +2,8 @@
   Programmer: Chloe E. Barnes
   Date: 7/23/2026
   Description: This is the main homepage for the Athletes & Mental Health (AAMH) website.
-  It introduces the organization, founder, and core programs while providing navigation to all other pages.
+  It introduces the organization, founder, core programs, and Dr. Lovie's 4 brand divisions
+  while providing navigation to all other pages.
 -->
 
 <!DOCTYPE html>
@@ -11,37 +12,209 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AAMH – Athletes & Mental Health</title>
-
-  <!-- =====================================================
-    FONTS
-  ====================================================== -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"/>
-
-  <!-- Your stylesheet -->
   <link rel="stylesheet" href="style.css"/>
+
+  <style>
+    /* ── DIVISIONS ACCORDION ── */
+    .divisions {
+      background: var(--white);
+      padding: 80px 60px;
+    }
+    .divisions-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .divisions-header .eyebrow {
+      color: var(--lime);
+      display: block;
+      margin-bottom: 10px;
+    }
+    .divisions-header h2 {
+      font-size: 2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+    .divisions-header p {
+      font-size: 0.92rem;
+      color: #555;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .accordion {
+      max-width: 860px;
+      margin: 0 auto;
+      border-top: 2px solid #e5e5e5;
+    }
+
+    .accordion-item {
+      border-bottom: 2px solid #e5e5e5;
+      overflow: hidden;
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+      gap: 20px;
+    }
+
+    .accordion-trigger-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .accordion-number {
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      color: var(--lime);
+      text-transform: uppercase;
+      min-width: 28px;
+    }
+
+    .accordion-title {
+      font-size: 1.15rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--black);
+      letter-spacing: 0.04em;
+    }
+
+    .accordion-subtitle {
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: #888;
+      text-transform: none;
+      letter-spacing: 0.02em;
+      display: block;
+      margin-top: 3px;
+    }
+
+    .accordion-icon {
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--lime);
+      line-height: 1;
+      transition: transform 0.3s ease;
+      min-width: 24px;
+      text-align: center;
+      font-family: monospace;
+    }
+
+    .accordion-item.open .accordion-icon {
+      transform: rotate(45deg);
+    }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 0 0 48px;
+    }
+
+    .accordion-item.open .accordion-body {
+      max-height: 600px;
+      padding: 0 0 32px 48px;
+    }
+
+    .accordion-body p {
+      font-size: 0.9rem;
+      color: #444;
+      line-height: 1.8;
+      margin-bottom: 16px;
+      max-width: 640px;
+    }
+
+    .accordion-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .accordion-tag {
+      background: var(--gray-bg);
+      color: var(--text);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid #e0e0e0;
+    }
+
+    .accordion-cta {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--black);
+      background: var(--lime);
+      padding: 10px 20px;
+      border-radius: 30px;
+      transition: opacity 0.2s;
+    }
+    .accordion-cta:hover { opacity: 0.8; }
+
+    /* ── HERO GRADIENT FIX ── */
+    .hero-image::before {
+      background: linear-gradient(
+        to right,
+        rgba(0,0,0,1) 0%,
+        rgba(0,0,0,0.85) 30%,
+        rgba(0,0,0,0.4) 55%,
+        rgba(0,0,0,0.05) 100%
+      ) !important;
+    }
+
+    .hero-bg {
+      background: linear-gradient(
+        to right,
+        rgba(0,0,0,1) 0%,
+        rgba(0,0,0,0.9) 35%,
+        rgba(0,0,0,0.3) 60%,
+        rgba(0,0,0,0) 100%
+      ) !important;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .divisions { padding: 48px 20px; }
+      .accordion-item.open .accordion-body { padding: 0 0 24px 32px; }
+      .accordion-title { font-size: 1rem; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- =====================================================
-    NAVIGATION BAR
-  ====================================================== -->
+  <!-- ── NAV ── -->
   <nav id="main-nav">
     <div class="logo">A<span>AM</span>H <small>ATHLETES <span> & MENTAL </span>HEALTH</small></div>
-
     <ul class="nav-links">
-      <li><a href="#home"       class="nav-link active">Home</a></li>
-      <li><a href="about.html"  class="nav-link">About</a></li>
-      <li><a href="programs.html"   class="nav-link">Programs</a></li>
+      <li><a href="#home"      class="nav-link active">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="programs.html" class="nav-link">Programs</a></li>
       <li><a href="contact.html" class="btn btn-lime nav-cta">Work With AAMH</a></li>
     </ul>
-
     <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
   </nav>
 
-  <!-- =====================================================
-    HERO SECTION
-  ====================================================== -->
-  <section id="home"      class="hero">
+  <!-- ── HERO ── -->
+  <section id="home" class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
       <h1>
@@ -49,90 +222,63 @@
         Stronger Athletes.<br>
         <span class="script">Stronger Futures.</span>
       </h1>
-      <p>
-        Creating sport spaces where athletes feel seen as people first.
-      </p>
-      <p>
-        Infusing empathy into sport spaces while destigmatizing conversations about mental health through
-        education, connection, and community.
-      </p>
+      <p>Creating sport spaces where athletes feel seen as people first.</p>
+      <p>Infusing empathy into sport spaces while destigmatizing conversations about mental health through education, connection, and community.</p>
       <div class="hero-buttons">
-        <a href="contact.html" class="btn btn-outline">Work With AAMH</a>
-        <a href="#about.html" class="btn btn-outline">Learn More</a>
+        <a href="contact.html" class="btn btn-lime">Work With AAMH</a>
+        <a href="about.html"   class="btn btn-outline">Learn More</a>
       </div>
     </div>
     <div class="hero-image">
-      <img src="images/lovie-speaks.jpg" alt="Dr. Lovie Tabron" />
+      <img src="images/lovie-speaks.jpg" alt="Dr. Lovie Tabron speaking" />
     </div>
   </section>
 
-  <!-- =====================================================
-    PILLARS STRIP
-  ====================================================== -->
+  <!-- ── PILLARS ── -->
   <section class="pillars">
-
     <div class="pillar">
-      <img src="images/mental-performance-icon.png" alt="Mental Performance" class="pillar-icon" /> 
+      <img src="images/mental-performance-icon.png" alt="Mental Performance" class="pillar-icon" />
       <h3>Mental Performance</h3>
       <p>Evidence-informed tools to help athletes train their mind like they train their body.</p>
     </div>
-
     <div class="pillar">
-      <img src="images/mental-wellness-icon.png" alt="Mental Performance" class="pillar-icon" />
+      <img src="images/mental-wellness-icon.png" alt="Mental Wellness" class="pillar-icon" />
       <h3>Mental Wellness</h3>
       <p>Promoting emotional well-being, self-awareness, and healthy coping strategies.</p>
     </div>
-
     <div class="pillar">
-      <img src="images/athlete-development-icon.png" alt="Athlete Development" class="pillar-icon" /> 
+      <img src="images/athlete-development-icon.png" alt="Athlete Development" class="pillar-icon" />
       <h3>Athlete Development</h3>
       <p>Building confidence, leadership, and identity beyond the game to prepare for life.</p>
     </div>
-
     <div class="pillar">
-      <img src="images/a-supportive-community-icon.png" alt="A Supportive Community" class="pillar-icon" /> 
+      <img src="images/a-supportive-community-icon.png" alt="A Supportive Community" class="pillar-icon" />
       <h3>A Supportive Community</h3>
       <p>Creating safe spaces for athletes, families, and coaches to learn and grow together.</p>
     </div>
   </section>
 
-  <!-- =====================================================
-    FOUNDER SECTION
-  ====================================================== -->
-  <section id="about"     class="founder">
-
+  <!-- ── FOUNDER ── -->
+  <section id="about" class="founder">
     <div class="founder-photo">
       <img src="images/lovie-headshot.jpg" alt="Dr. Lovie Tabron" />
     </div>
-
-
     <div class="founder-text">
       <p class="eyebrow">Meet the Founder</p>
       <h2>Hi, I'm Dr. Lovie Tabron.</h2>
       <div class="accent-bar"></div>
-      <p>
-        I believe every person deserves to be seen, heard, and valued, not because of what they achieve, but because of who they are. 
-        My faith has always been the foundation of that belief. 
-        I believe every person is created with purpose, inherent worth, and the capacity to grow, even in life's most difficult seasons. 
-        That conviction shapes how I serve, how I lead, and how I care for every person I have the privilege of walking alongside.
-      </p>
-      <p>
-        I have learned that our calling is often found where our deepest gratitude meets the needs of others. For me, that calling has always been people.
-      </p>
+      <p>I believe every person deserves to be seen, heard, and valued — not because of what they achieve, but because of who they are. My faith has always been the foundation of that belief.</p>
+      <p>I have learned that our calling is often found where our deepest gratitude meets the needs of others. For me, that calling has always been people.</p>
       <a href="about.html" class="btn btn-lime">More About Lovie</a>
     </div>
   </section>
 
-  <!-- =====================================================
-    PROGRAMS & SERVICES
-  ====================================================== -->
-  <section id="programs"  class="programs">
+  <!-- ── PROGRAMS ── -->
+  <section id="programs" class="programs">
     <span class="eyebrow">How We Help</span>
     <h2>Programs & Services</h2>
     <p>AAMH offers engaging programs for athletes, teams, coaches, and parents designed to build stronger minds and stronger communities.</p>
-
     <div class="program-grid">
-
       <div class="program-card">
         <div class="program-overlay">
           <img src="images/team-icon.png" alt="Team Workshops" class="pillar-icon" />
@@ -140,15 +286,13 @@
           <p>Interactive sessions that build mental skills, confidence, and team culture.</p>
         </div>
       </div>
-
       <div class="program-card">
         <div class="program-overlay">
-          <img src="images/coach-development-icon.png" alt="Coach Development" class="pillar-icon" /> 
+          <img src="images/coach-development-icon.png" alt="Coach Development" class="pillar-icon" />
           <h3>Coach Development</h3>
           <p>Equipping coaches with tools to support athletes' mental wellness and growth.</p>
         </div>
       </div>
-
       <div class="program-card">
         <div class="program-overlay">
           <img src="images/parent-education-icon.png" alt="Parent Education" class="pillar-icon" />
@@ -156,23 +300,134 @@
           <p>Guidance and education to help families support their athlete.</p>
         </div>
       </div>
-
       <div class="program-card">
         <div class="program-overlay">
           <img src="images/keynote-speaking-icon.png" alt="Keynote Speaking" class="pillar-icon" />
           <h3>Keynote Speaking</h3>
-          <p>Guidance and education to help families support their athlete.</p>
+          <p>Powerful, story-driven talks that shift the culture around mental health in sport.</p>
+        </div>
+      </div>
+    </div>
+    <a href="programs.html" class="btn btn-outline-dark">View All Programs</a>
+  </section>
+
+  <!-- ── 4 DIVISIONS ACCORDION ── -->
+  <section class="divisions" id="divisions">
+    <div class="divisions-header">
+      <span class="eyebrow">The Dr. Lovie Brand</span>
+      <h2>Helping People Heal, Perform & Become</h2>
+      <p>A purpose-driven brand with four divisions — each one designed to meet people exactly where they are.</p>
+    </div>
+
+    <div class="accordion">
+
+      <!-- Division 1: AAMH -->
+      <div class="accordion-item open">
+        <button class="accordion-trigger" aria-expanded="true">
+          <div class="accordion-trigger-left">
+            <span class="accordion-number">01</span>
+            <div>
+              <span class="accordion-title">AAMH — Athletes & Mental Health</span>
+              <span class="accordion-subtitle">Sports & Performance</span>
+            </div>
+          </div>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>Helping athletes, coaches, teams, schools, and organizations create healthier, higher-performing environments through education, consulting, performance psychology, and mental wellness.</p>
+          <div class="accordion-tags">
+            <span class="accordion-tag">Student Athletes</span>
+            <span class="accordion-tag">Professional Athletes</span>
+            <span class="accordion-tag">Coaches</span>
+            <span class="accordion-tag">Athletic Departments</span>
+            <span class="accordion-tag">Parents</span>
+            <span class="accordion-tag">Sport Organizations</span>
+          </div>
+          <a href="programs.html" class="accordion-cta">View Programs →</a>
+        </div>
+      </div>
+
+      <!-- Division 2: Counseling -->
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false">
+          <div class="accordion-trigger-left">
+            <span class="accordion-number">02</span>
+            <div>
+              <span class="accordion-title">Dr. Lovie Counseling</span>
+              <span class="accordion-subtitle">Clinical Mental Health</span>
+            </div>
+          </div>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>Evidence-based counseling for adolescents and adults navigating life's challenges. Specializing in Sport & Performance Psychology, Identity & Life Transitions, Mood & Anxiety Support, and Mind-Body Wellness.</p>
+          <p>Credentials: CMHC, LAT, CCISM, EdD · Format: Telehealth / In-Person / Hybrid · Currently accepting new clients · Private Pay</p>
+          <div class="accordion-tags">
+            <span class="accordion-tag">Individual Therapy</span>
+            <span class="accordion-tag">Adolescents & Adults</span>
+            <span class="accordion-tag">Anxiety & Mood</span>
+            <span class="accordion-tag">Life Transitions</span>
+            <span class="accordion-tag">Mind-Body Wellness</span>
+          </div>
+          <a href="https://www.rmcollective.org/" target="_blank" class="accordion-cta">Book a Session →</a>
+        </div>
+      </div>
+
+      <!-- Division 3: Consulting -->
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false">
+          <div class="accordion-trigger-left">
+            <span class="accordion-number">03</span>
+            <div>
+              <span class="accordion-title">Consulting & Education</span>
+              <span class="accordion-subtitle">Organizations & Leaders</span>
+            </div>
+          </div>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>Helping organizations strengthen culture, leadership, communication, resilience, and wellbeing. From keynote stages to boardrooms, Dr. Lovie brings practical tools that create lasting transformation.</p>
+          <div class="accordion-tags">
+            <span class="accordion-tag">Education</span>
+            <span class="accordion-tag">Speaking</span>
+            <span class="accordion-tag">Strategy</span>
+            <span class="accordion-tag">Leadership</span>
+            <span class="accordion-tag">Organizations</span>
+          </div>
+          <a href="contact.html" class="accordion-cta">Start a Conversation →</a>
+        </div>
+      </div>
+
+      <!-- Division 4: You Deserve It -->
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false">
+          <div class="accordion-trigger-left">
+            <span class="accordion-number">04</span>
+            <div>
+              <span class="accordion-title">You Deserve It</span>
+              <span class="accordion-subtitle">Personal Growth & Reflection</span>
+            </div>
+          </div>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>Helping people intentionally invest in themselves through guided reflection, journals, books, workshops, and experiences that encourage growth from the inside out. Because "You Deserve It" isn't about paper — it's about permission. Permission to heal, rest, grow, celebrate, reflect, and become.</p>
+          <div class="accordion-tags">
+            <span class="accordion-tag">Journals</span>
+            <span class="accordion-tag">Guided Workbooks</span>
+            <span class="accordion-tag">Retreats</span>
+            <span class="accordion-tag">Digital Courses</span>
+            <span class="accordion-tag">Community</span>
+            <span class="accordion-tag">Coming Soon</span>
+          </div>
+          <a href="contact.html" class="accordion-cta">Stay Connected →</a>
         </div>
       </div>
 
     </div>
-
-    <a href="programs.html" class="btn btn-outline-dark">View All Programs</a>
   </section>
 
-  <!-- =====================================================
-    QUOTE + EMAIL SIGN-UP BANNER
-  ====================================================== -->
+  <!-- ── BANNER ── -->
   <section id="contact" class="banner">
     <div class="banner-quote">
       <div>
@@ -191,9 +446,7 @@
     </div>
   </section>
 
-  <!-- =====================================================
-    FOOTER
-  ====================================================== -->
+  <!-- ── FOOTER ── -->
   <footer>
     <div class="footer-logo">
       A<span>A</span>MH
@@ -204,14 +457,34 @@
         <img src="images/icons8-instagram-logo-50.png" alt="Instagram" style="width:24px; height:24px;" />
       </a>
       <a href="https://mail.google.com/mail/?view=cm&to=AAMHInformation@gmail.com" target="_blank" aria-label="Email">
-         <img src="images/icons8-gmail-50.png" alt="Email" style="width:24px; height:24px;" />
+        <img src="images/icons8-gmail-50.png" alt="Email" style="width:24px; height:24px;" />
       </a>
     </div>
     <p class="footer-copy">© 2026 Athletes & Mental Health, LLC. All Rights Reserved.</p>
   </footer>
 
-  <!--JavaScript-->
   <script src="main.js"></script>
+  <script>
+    // ── ACCORDION ──
+    document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.accordion-item');
+        const isOpen = item.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.accordion-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+        });
+
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
